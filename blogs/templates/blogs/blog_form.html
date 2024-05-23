@@ -1,0 +1,28 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 m-auto" >
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">
+                                {% if object %}
+                                    Сохранить
+                                {% else %}
+                                    Создать
+                                {% endif %}
+                            </button>
+                            <a href="{% url 'blogs:list' %}" class="btn btn-warning">Отмена</a>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
